@@ -63,9 +63,8 @@
 
   </div>
 
-
-  <!-- table -->
-  <div class="container">
+  <!-- table User-->
+<div class="container">
     <table class="table">
       <thead>
         <tr>
@@ -82,7 +81,36 @@
       </tbody>
     </table>
   </div>
+
+  <!-- table Product-->
+   <h1 class="text-center mb-4 mt-5 underline text-decoration-underline">Product List</h1>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#ID</th>
+          <th>Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Category</th>
+          <th scope="col">Created at</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody id="productData">
+          #loading {
+  min-height: 100px;
+}
+
+      </tbody>
+    </table>
+  </div>
+
+  
+
   <script src="./js/user.js"></script>
+  <script src="./js/producAdmin.js"></script>
 </body>
 
 </html>

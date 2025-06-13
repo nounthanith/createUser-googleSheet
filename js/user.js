@@ -7,12 +7,12 @@ async function getdata() {
   try {
     const res = await fetch(url + "?action=read");
     const data = await res.json();
-    console.log(data.data);
+    // console.log(data.data);
     userData.innerHTML = ""; 
 
     for (let i = 0; i < data.data.length; i++) {
       userData.innerHTML += `
-      <tr>
+      <tr class="align-middle">
         <th scope="row">#${data.data[i][0]}</th>
         <td class="fw-bold">${data.data[i][1]}</td>
         <td class="text-primary cursor-pointer">${data.data[i][2]}</td>

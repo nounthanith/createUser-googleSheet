@@ -1,0 +1,59 @@
+const urlp =
+  "https://script.google.com/macros/s/AKfycbz2gtxp-wFL26T2scW_YIdE8ishMETEC5h8Ci52bgLo7cr9gAtDVSkp77HRvpJ73wnW/exec";
+
+const productData = document.getElementById("productData");
+const productDataUser = document.getElementById("productDataUser");
+
+async function getdata() {
+  try {
+    const res = await fetch(urlp + "?action=read");
+    const data = await res.json();
+    const rows = data.data;
+
+    if (productData) productData.innerHTML = "";
+    if (productDataUser) productDataUser.innerHTML = "";
+
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+
+      if (productData) {
+        productData.innerHTML += `
+          <tr class="align-middle">
+            <th>${row[0]}</th>
+            <td><img style="width:50px; height:50px" src="${row[5]}" alt="${row[1]}"></td>
+            <td class="fw-bold text-uppercase">${row[1]}</td>
+            <td class="text-primary cursor-pointer">${row[2]}</td>
+            <td class="text-uppercase">${row[3]}</td>
+            <td>${row[4]}</td>
+            <td>${row[6]}</td>
+            <td>
+              <button onclick="DeleteData(${row[0]})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      }
+
+      if (productDataUser) {
+        productDataUser.innerHTML += `
+          <div class="card" style="width: 18rem;">
+            <img src="${row[5]}" class="card-img-top w-100 h-100" alt="${row[1]}">
+            <div class="card-body">
+              <h5 class="card-title">${row[1]}</h5>
+              <p class="card-text">${row[2]}</p>
+              <p class="card-text">Price: ${row[3]}$</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+  } catch (error) {
+    console.error("Fetch error:", error.message);
+  }
+}
+
+getdata();
