@@ -15,8 +15,18 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <body>
+  <header class="d-flex justify-content-between align-items-center p-3 bg-light border-bottom">
+        <div>
+            <a href="product.html" class="h4 mb-0">logo</a>
+        </div>
+       <div>
+           <a class="d-flex align-items-center justify-content-center gap-4 text-dark text-decoration-none hover-underline" id="navbar"></a>
+       </div>
+       
+    </header>
+    <script src="./js/navbar.js"></script>
   <div class="container mt-5">
-    <h1 class="text-center mb-4">User Management</h1>
+    <h1 class="text-center mb-4">Admin Dashboard</h1>
 
     <!-- Add User Button -->
     <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -72,7 +82,7 @@
       </tbody>
     </table>
   </div>
-  <script src="user.js"></script>
+  <script src="./js/user.js"></script>
 </body>
 
 </html>
