@@ -15,15 +15,32 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <body>
-  <header class="d-flex justify-content-between align-items-center p-3 bg-light border-bottom">
-        <div>
-            <a href="product.html" class="h4 mb-0">logo</a>
-        </div>
-       <div>
-           <a class="d-flex align-items-center justify-content-center gap-4 text-dark text-decoration-none hover-underline" id="navbar"></a>
-       </div>
-       
-    </header>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" href="#">MyStore</a>
+
+    <!-- Toggler (for small screens) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3" id="navbar">
+        <!-- Dynamic links will be injected here -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
     <script src="./js/navbar.js"></script>
   <div class="container mt-5">
     <h1 class="text-center mb-4">Admin Dashboard</h1>
@@ -64,48 +81,47 @@
   </div>
 
   <!-- table User-->
-<div class="container">
-    <table class="table">
-      <thead>
+<!-- User Table -->
+<div class="container mt-5">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover align-middle">
+      <thead class=" text-center">
         <tr>
           <th scope="col">#ID</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Role</th>
-          <th scope="col">Created at</th>
+          <th scope="col">Created At</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody id="userData">
-
-      </tbody>
+      <tbody id="userData" class="text-center"></tbody>
     </table>
   </div>
+</div>
 
-  <!-- table Product-->
-   <h1 class="text-center mb-4 mt-5 underline text-decoration-underline">Product List</h1>
-  <div class="container">
-    <table class="table">
-      <thead>
+<!-- Product Table -->
+<h1 class="text-center mb-4 mt-5 text-decoration-underline">Product List</h1>
+<div class="container mb-5">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover align-middle">
+      <thead class=" text-center">
         <tr>
           <th scope="col">#ID</th>
-          <th>Image</th>
+          <th scope="col">Image</th>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th scope="col">Price</th>
           <th scope="col">Category</th>
-          <th scope="col">Created at</th>
+          <th scope="col">Created At</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody id="productData">
-          #loading {
-  min-height: 100px;
-}
-
-      </tbody>
+      <tbody id="productData" class="text-center"></tbody>
     </table>
   </div>
+</div>
+
 
   
 
