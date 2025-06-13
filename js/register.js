@@ -15,7 +15,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     name: name,
     email: email,
     password: password,
-    role: role,
+    role: defaultRole = role || "user",
     created_at: new Date().toISOString(),
   };
 

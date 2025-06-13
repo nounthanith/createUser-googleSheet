@@ -59,3 +59,63 @@ async function getdata() {
 }
 
 getdata();
+
+document.getElementById("productForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("nameProduct").value;
+  const description = document.getElementById("descriptionProduct").value;
+  const price = document.getElementById("priceProduct").value;
+  const category = document.getElementById("categoryProduct").value;
+  const image = document.getElementById("imageProduct").value;
+
+  const params = {
+    action: "insert",
+    id: Math.floor(Math.random() * 1000000),
+    name: name,
+    description: description,
+    price: price,
+    category: category,
+    image_url: image,
+    created_at: new Date().toISOString(),
+  };
+
+  console.log("Submitting product data:", params);
+
+  fetch(urlp + "?" + new URLSearchParams(params), { method: "POST" })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === "success") {
+        // Optionally refresh product list here
+        document.getElementById("productForm").reset();
+        // Hide modal
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("addProductModal")
+        );
+        modal.hide();
+        alert("Product added successfully!");
+      } else {
+        alert("Failed to add product.");
+      }
+    })
+    .catch((error) => {
+      alert("Error: " + error.message);
+    });
+});
+
+function DeleteData(id) {
+  const params = {
+    action: "delete",
+    id: id,
+  };
+
+  fetch(urlp + "?" + new URLSearchParams(params), { method: "POST" })
+    .then((response) => response.json())
+    .then((data) => {
+      getdata(); // Refresh table after delete
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error deleting product:", error.message);
+    });
+}

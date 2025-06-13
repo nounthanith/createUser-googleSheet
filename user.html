@@ -97,6 +97,40 @@
 
   <!-- Product Table -->
   <h1 class="text-center mb-4 mt-5 text-decoration-underline">Product List</h1>
+  <div class="container">
+    <button type="button" class="btn btn-primary mt-2 mb-2" data-bs-toggle="modal" data-bs-target="#addProductModal">
+      +Add Product
+    </button>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="addProductModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addProductModalLabel">Add Product</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body  ">
+            <form id="productForm" class="mb-4 container">
+              <div class="d-grid gap-2">
+                <input type="text" class="form-control" id="nameProduct" placeholder="Name" required
+                  style="flex:1 200px;">
+                <input type="text" class="form-control" id="descriptionProduct" placeholder="Description"
+                  required style="flex: 1 200px;">
+                <input type="text" class="form-control" id="priceProduct" placeholder="Price" required
+                  style="flex: 1 200px;">
+                <input type="text" class="form-control" id="categoryProduct" placeholder="Category" required
+                  style="flex: 200px;">
+                <input type="text" class="form-control" id="imageProduct" placeholder="Image URL" required>
+                <button type="submit" class="btn btn-success">Add Product</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container mb-5">
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover align-middle">

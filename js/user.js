@@ -56,9 +56,11 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const role = document.getElementById("role").value;
-  
-  const params = {
+  let role = document.getElementById("role").value;
+
+  role = role || "user";
+
+  let params = {
     action: "insert",
     id: Math.floor(Math.random() * 1000000),
     name: name,
