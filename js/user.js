@@ -19,10 +19,13 @@ async function getdata() {
         <td class="text-uppercase">${data.data[i][4]}</td>
         <td>${data.data[i][5]}</td>
         <td>
-          <button onclick="DeleteData(${data.data[i][0]})" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="fa-solid fa-trash"></i> </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="fa-solid fa-pen-to-square"></i> </button>
+          <div class="d-flex gap-2 justify-content-center">
+            <button onclick="DeleteData(${data.data[i][0]})" class="btn btn-danger btn-sm">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <button class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </td>
       </tr>`;
     }

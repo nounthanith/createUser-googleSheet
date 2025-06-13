@@ -23,16 +23,18 @@ async function getdata() {
             <td><img style="width:50px; height:50px" src="${row[5]}" alt="${row[1]}"></td>
             <td class="fw-bold text-uppercase">${row[1]}</td>
             <td class="text-primary cursor-pointer">${row[2]}</td>
-            <td class="text-uppercase">${row[3]}</td>
+            <td class="text-uppercase">${row[3]}$</td>
             <td>${row[4]}</td>
             <td>${row[6]}</td>
             <td>
-              <button onclick="DeleteData(${row[0]})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-solid fa-trash"></i>
-              </button>
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
+              <div class="d-flex gap-2 justify-content-center">
+                <button onclick="DeleteData(${row[0]})" class="btn btn-danger btn-sm">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+              </div>
             </td>
           </tr>
         `;
