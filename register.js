@@ -1,6 +1,6 @@
 const url =
   "https://script.google.com/macros/s/AKfycbyycsdm_UzEGSSaXX60Vv2Od3kEOFUSE5jq8VEl4EvGoPfvX_4vbGwdyfAbClX_upv4/exec";
-  
+
 document.getElementById("userForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -24,7 +24,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     .then((data) => {
       if (data.status === "success") {
         // Redirect to login page
-        window.location.href = "login.html"; // Change to your login page path
+        window.location.href = "index.html"; // Change to your login page path
       } else {
         alert("Registration failed. Please try again.");
       }
