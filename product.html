@@ -15,34 +15,44 @@
     <link rel="stylesheet" href="./css/product.css" />
   </head>
   <body>
-    <header
-      class="d-flex justify-content-between align-items-center p-3 bg-light border-bottom"
-    >
-      <div>
-        <a href="product.html" class="h4 mb-0">logo</a>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
+      >
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="#">MyStore</a>
+
+        <!-- Toggler (for small screens) -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3" id="navbar">
+            <!-- Dynamic links will be injected here -->
+          </ul>
+        </div>
       </div>
-      <div>
-        <a
-          class="d-flex align-items-center justify-content-center gap-4 text-dark text-decoration-none hover-underline"
-          id="navbar"
-        ></a>
-      </div>
-      <div>
-        <input
-          class="form-control"
-          placeholder="Search"
-          type="text"
-          name=""
-          id=""
-        />
-      </div>
-    </header>
+    </nav>
 
     <main class="container mt-5">
       <div class="d-flex gap-4" id="productDataUser">
         <div
           id="loading"
-          class="d-flex justify-content-center align-items-center "
+          class="d-flex justify-content-center align-items-center"
           style="height: 100px"
         >
           <div class="spinner-border text-primary" role="status">
