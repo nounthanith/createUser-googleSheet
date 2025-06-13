@@ -1,5 +1,5 @@
 const url =
-  "https://script.google.com/macros/s/AKfycbyycsdm_UzEGSSaXX60Vv2Od3kEOFUSE5jq8VEl4EvGoPfvX_4vbGwdyfAbClX_upv4/exec";
+  "https://script.google.com/macros/s/AKfycbziGW3C4DgAwm5bjqydAnPZRUDOjSGqi2Nglq9gw8jU9OvlsaYnuxoDgK0BFQt3lOt8/exec";
 
 const userData = document.getElementById("userData");
 
@@ -8,7 +8,7 @@ async function getdata() {
     const res = await fetch(url + "?action=read");
     const data = await res.json();
     // console.log(data.data);
-    userData.innerHTML = ""; 
+    userData.innerHTML = "";
 
     for (let i = 0; i < data.data.length; i++) {
       userData.innerHTML += `
@@ -43,8 +43,9 @@ function DeleteData(id) {
   };
 
   fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+
+    .then(data => {
       getdata(); // Refresh table after delete
       console.log(data);
     });

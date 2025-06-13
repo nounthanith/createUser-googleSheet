@@ -19,7 +19,7 @@ async function getdata() {
       if (productData) {
         productData.innerHTML += `
           <tr class="align-middle">
-            <th>${row[0]}</th>
+            <th>#${row[0]}</th>
             <td><img style="width:50px; height:50px" src="${row[5]}" alt="${row[1]}"></td>
             <td class="fw-bold text-uppercase">${row[1]}</td>
             <td class="text-primary cursor-pointer">${row[2]}</td>
@@ -77,7 +77,7 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
     price: price,
     category: category,
     image_url: image,
-    created_at: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
   };
 
   console.log("Submitting product data:", params);

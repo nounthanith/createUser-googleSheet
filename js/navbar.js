@@ -7,6 +7,10 @@ const navItems = [
     name: "Login",
     href: "index.html",
   },
+  {
+    name: "Admin",
+    href: "user.html",
+  }
   
 ];
 
