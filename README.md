@@ -1,68 +1,57 @@
-function doGet(e) {
-  return handleRequest(e);
-}
+# Google Sheet API User & Product Management
 
-function doPost(e) {
-  return handleRequest(e);
-}
+This project is a web application for managing users and products using a Google Apps Script backend and Google Sheets as a database. It features user registration, login, product management, and admin/user role handling.
 
-function handleRequest(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var result;
+## Features
 
-  // Determine the type of request
-  switch (e.parameter.action) {
-    case 'read':
-      result = readData(sheet);
-      break;
-    case 'insert':
-      result = insertData(sheet, e);
-      break;
-    case 'update':
-      result = updateData(sheet, e);
-      break;
-    case 'delete':
-      result = deleteData(sheet, e);
-      break;
-    default:
-      result = { status: 'Unknown command' };
-  }
-  return ContentService.createTextOutput(JSON.stringify(result))
-    .setMimeType(ContentService.MimeType.JSON);
-}
+- **User Registration:** Register new users with default role as `user`.
+- **User Login:** Login with email and password. Redirects to user dashboard on success.
+- **Role-Based Navigation:** Hides login link for logged-in users.
+- **Product Management:** Admins can add, view, and delete products.
+- **Responsive Design:** Built with Bootstrap for mobile and desktop.
 
-function readData(sheet) {
-  var rows = sheet.getDataRange().getValues();
-  return { status: 'success', data: rows.slice(1) };  // Exclude header row
-}
+## Technologies Used
 
-function insertData(sheet, e) {
-  var data = [e.parameter.id, e.parameter.name, e.parameter.email,
-  e.parameter.password, e.parameter.role, e.parameter.created_at];
-  sheet.appendRow(data);
-  return { status: 'success', data: 'Data inserted' };
-}
+- HTML, CSS, JavaScript (Frontend)
+- Bootstrap 5
+- Google Apps Script (Backend)
+- Google Sheets (Database)
 
-function updateData(sheet, e) {
-  var id = e.parameter.id;
-  var rows = sheet.getDataRange().getValues();
-  for (var i = 1; i < rows.length; i++) {
-    if (rows[i][0] == id) {
-      sheet.getRange(i + 1, 2, 1, 4).setValues([[e.parameter.id, e.parameter.name, e.parameter.email,
-      e.parameter.password, e.parameter.role, e.parameter.created_at]]);
-      return { status: 'success', data: 'Data updated' };
-    }
-  }
-  return { status: 'error', data: 'ID not found' };
-}
+## Setup
 
-function deleteData(sheet, e) {
-  var id = e.parameter.id;
-  var rows = sheet.getDataRange().getValues();
-  for (var i = 1; i < rows.length; i++) {
-    if (rows[i][0] == id) {
-      sheet.deleteRow(i + 1);
-      return { status: 'success', data: 'Data deleted' };
-    }
-  } return { status: 'error', data: 'ID not found' };
-}
+1. **Clone this repository.**
+2. **Set up your Google Apps Script:**
+   - Deploy a new Apps Script linked to a Google Sheet.
+   - Copy the script code for handling `insert`, `read`, and `delete` actions.
+   - Deploy as a web app and get the API URL.
+3. **Update the API URL:**
+   - Replace the `url` variable in your JS files with your Apps Script web app URL.
+
+## Usage
+
+- **Register:** Go to `register.html` and create a new user.
+- **Login:** Go to `login.html` and log in with your email and password.
+- **Admin:** If logged in as admin, access product management features.
+- **User:** Regular users have limited access.
+
+## File Structure
+
+```
+/index.html         # Main or login page
+/register.html      # Registration page
+/login.html         # Login page
+/user.html          # User dashboard
+/userAdmin.html     # Admin dashboard
+/main.js            # Main JS logic
+/login.js           # Login logic
+/producAdmin.js     # Product admin logic
+```
+
+## Notes
+
+- Make sure your Google Sheet columns match the order expected by the Apps Script.
+- For security, do not use this as-is for production. Passwords are stored in plain text for demo purposes.
+
+## License
+
+MIT
