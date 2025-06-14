@@ -69,7 +69,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     id: Math.floor(Math.random() * 10000),
     name: name,
     email: email,
-    password: password * 123, // Assuming you want to hash or encode the password
+    password: password,
     role: role,
     created_at: new Date().toISOString(),
   };

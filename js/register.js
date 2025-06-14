@@ -14,7 +14,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     id: Math.floor(Math.random() * 10000),
     name: name,
     email: email,
-    password: password * 123,
+    password: password,
     role: defaultRole = role || "user",
     created_at: new Date().toISOString(),
   };
