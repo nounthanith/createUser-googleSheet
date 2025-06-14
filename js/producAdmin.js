@@ -44,7 +44,7 @@ async function getdata() {
           <tr class="align-middle">
             <th>#${row[0]}</th>
             <td><img style="width:50px; height:50px" src="${row[5]}" alt="${row[1]}"></td>
-            <td class="fw-bold text-uppercase">${row[1]}</td>
+            <td class="fw-bold text-uppercase text-truncate truncate-2-lines" style="max-width: 200px;">${row[1]}</td>
             <td class="text-primary cursor-pointer">${row[2]}</td>
             <td class="text-uppercase">${row[3]}$</td>
             <td>${row[4]}</td>
