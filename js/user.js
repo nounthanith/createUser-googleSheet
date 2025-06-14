@@ -5,10 +5,17 @@ const userData = document.getElementById("userData");
 const userCount = document.getElementById("userCount");
 
 async function getdata() {
+  // Check role from localStorage (or wherever you store it)
+  const role = localStorage.getItem("role");
+  if (role === "user") {
+    userData.innerHTML = '<h1 class="text-danger text-center">You don\'t have permission</h1>';
+    // Optionally, hide the table header or other admin-only elements here
+    return;
+  }
+
   try {
     const res = await fetch(url + "?action=read");
     const data = await res.json();
-    // console.log(data.data);
     userData.innerHTML = "";
 
     for (let i = 0; i < data.data.length; i++) {
@@ -29,8 +36,8 @@ async function getdata() {
             </button>
         </td>
       </tr>`;
-      document.getElementById("userCount").textContent = data.data.length;
     }
+    document.getElementById("userCount").textContent = data.data.length;
   } catch (error) {
     console.log(error.message);
   }
@@ -41,6 +48,16 @@ getdata();
 document.getElementById("userForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  const localRole = localStorage.getItem("role");
+  if (localRole === "user") {
+    // Show alert and stop
+    if (typeof Swal !== "undefined") {
+      alert("You don't have permission to add users.", "", "error");
+    } else {
+      alert("You don't have permission to add users.");
+    }
+    return;
+  }
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
