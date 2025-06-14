@@ -12,11 +12,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="./css/product.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm px-0 py-4 px-md-5">
       <div
         class="container-fluid d-flex justify-content-between align-items-center"
       >
@@ -49,14 +49,15 @@
     </nav>
 
     <main class="container mt-5">
-      <div class="d-flex gap-4 flex-wrap justify-content-center " id="productDataUser">
-        <div
-          id="loading"
-          class="d-flex justify-content-center align-items-center"
-          style="height: 100px"
-        >
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+      <h1 class="text-center mb-5">Product</h1>
+      <div class="d-flex gap-4 flex-wrap justify-content-start" id="productDataUser">
+        <div class="card" style="width: 18rem;">
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 1">
+          <div class="card-body">
+            <h5 class="card-title">Product 1</h5>
+            <p class="card-text">Description for Product 1</p>
+            <p class="text-success fw-bold">10$</p>
+            <p class="card-text btn btn btn-outline-secondary btn-sm">Category 1</p>
           </div>
         </div>
       </div>

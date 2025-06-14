@@ -14,9 +14,10 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./Style/style.css">
+
 <body>
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm px-5 py-4">
     <div class="container-fluid d-flex justify-content-between align-items-center">
       <!-- Logo -->
       <a class="navbar-brand fw-bold" href="#">MyStore</a>
@@ -78,7 +79,7 @@
 
   <script src="./js/navbar.js"></script>
   <div class="container mt-5">
-    <h1 class="text-center mb-4">Admin Dashboard</h1>
+    <h1 class="text-center mb-4 mt-5 text-decoration-underline">Admin Dashboard</h1>
 
     <!-- Add User Button -->
     <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -130,7 +131,9 @@
             <th scope="col">Action</th>
           </tr>
         </thead>
-        <tbody id="userData" class="text-center"></tbody>
+        <tbody id="userData" class="text-center">
+          <td colspan="8">No products found. Loding...</td>
+        </tbody>
       </table>
     </div>
   </div>
@@ -156,8 +159,8 @@
               <div class="d-grid gap-2">
                 <input type="text" class="form-control" id="nameProduct" placeholder="Name" required
                   style="flex:1 200px;">
-                <input type="text" class="form-control" id="descriptionProduct" placeholder="Description"
-                  required style="flex: 1 200px;">
+                <input type="text" class="form-control" id="descriptionProduct" placeholder="Description" required
+                  style="flex: 1 200px;">
                 <input type="text" class="form-control" id="priceProduct" placeholder="Price" required
                   style="flex: 1 200px;">
                 <input type="text" class="form-control" id="categoryProduct" placeholder="Category" required
@@ -186,7 +189,11 @@
             <th scope="col">Action</th>
           </tr>
         </thead>
-        <tbody id="productData" class="text-center"></tbody>
+        <tbody id="productData" class="text-center">
+          <tr>
+            <td class="text-danger" colspan="8">No Permission!!!</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>

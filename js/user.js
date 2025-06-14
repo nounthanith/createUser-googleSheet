@@ -5,11 +5,10 @@ const userData = document.getElementById("userData");
 const userCount = document.getElementById("userCount");
 
 async function getdata() {
-  // Check role from localStorage (or wherever you store it)
+ 
   const role = localStorage.getItem("role");
   if (role === "user") {
-    userData.innerHTML = '<h1 class="text-danger text-center">You don\'t have permission</h1>';
-    // Optionally, hide the table header or other admin-only elements here
+    userData.innerHTML = '<td class="text-danger" colspan="8">No Permission!!!</td>';
     return;
   }
 
@@ -70,7 +69,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     id: Math.floor(Math.random() * 10000),
     name: name,
     email: email,
-    password: password,
+    password: password * 123, // Assuming you want to hash or encode the password
     role: role,
     created_at: new Date().toISOString(),
   };

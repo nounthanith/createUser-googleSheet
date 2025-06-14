@@ -11,15 +11,36 @@ async function getdata() {
     const res = await fetch(urlp + "?action=read");
     const data = await res.json();
     const rows = data.data;
+    const role = localStorage.getItem("role");
 
+    if (role === "user") {
+      // Show user view
+      if (productDataUser) productDataUser.innerHTML = "";
+
+      let userHTML = "";
+      for (let row of rows) {
+        userHTML += `
+            <div class="card" style="width: 18rem;">
+              <img src="${row[5]}" class="card-img-top" alt="${row[1]}">
+              <div class="card-body">
+                <h5 class="card-title">${row[1]}</h5>
+                <p class="card-text">${row[2]}</p>
+                <p class="text-success fw-bold">${row[3]}$</p>
+                <p class="card-text btn btn btn-outline-secondary btn-sm">${row[4]}</p>
+              </div>
+            </div>
+          `;
+      }
+      productDataUser.innerHTML = userHTML;
+      return; // stop here if user
+    }
+
+    // Admin view
     if (productData) productData.innerHTML = "";
-    if (productDataUser) productDataUser.innerHTML = "";
+    let adminHTML = "";
 
-    for (let i = 0; i < rows.length; i++) {
-      const row = rows[i];
-
-      if (productData) {
-        productData.innerHTML += `
+    for (let row of rows) {
+      adminHTML += `
           <tr class="align-middle">
             <th>#${row[0]}</th>
             <td><img style="width:50px; height:50px" src="${row[5]}" alt="${row[1]}"></td>
@@ -33,36 +54,22 @@ async function getdata() {
                 <button onclick="DeleteData(${row[0]})" class="btn btn-danger btn-sm">
                   <i class="fa-solid fa-trash"></i>
                 </button>
-                <button class="btn btn-primary btn-sm">
+                <button onclick="detailData(${row[0]})" class="btn btn-primary btn-sm">
                   <i class="fa-solid fa-pen-to-square"></i>
                 </button>
               </div>
             </td>
           </tr>
         `;
-      }
+    }
 
-      if (productDataUser) {
-        productDataUser.innerHTML += `
-          <div class="card" style="width: 18rem;">
-            <img src="${row[5]}" class="card-img-top w-100 h-100" alt="${row[1]}">
-            <div class="card-body">
-              <h5 class="card-title">${row[1]}</h5>
-              <p class="card-text">${row[2]}</p>
-              <p class="card-text">Price: ${row[3]}$</p>
-            </div>
-          </div>
-        `;
-      }
+    productData.innerHTML = adminHTML;
 
-      if (productCount) {
-        productCount.innerHTML = rows.length;
-      }
-
-      if (totalPrice) {
-        const total = rows.reduce((sum, item) => sum + parseFloat(item[3]), 0);
-        totalPrice.innerHTML = total.toFixed(2) + "$";
-      }
+    // Set count and total price
+    if (productCount) productCount.innerHTML = rows.length;
+    if (totalPrice) {
+      const total = rows.reduce((sum, item) => sum + parseFloat(item[3]), 0);
+      totalPrice.innerHTML = total.toFixed(2) + "$";
     }
   } catch (error) {
     console.error("Fetch error:", error.message);
@@ -96,17 +103,21 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
   fetch(urlp + "?" + new URLSearchParams(params), { method: "POST" })
     .then((response) => response.json())
     .then((data) => {
-      if (data.status === "success") {
-        // Optionally refresh product list here
-        document.getElementById("productForm").reset();
-        // Hide modal
-        const modal = bootstrap.Modal.getInstance(
-          document.getElementById("addProductModal")
-        );
-        modal.hide();
-        alert("Product added successfully!");
-      } else {
-        alert("Failed to add product.");
+      const role = localStorage.getItem("role");
+      if (role === "user") alert("You don't have permission to add products.");
+      else {
+        if (data.status === "success") {
+          document.getElementById("productForm").reset();
+
+          const modal = bootstrap.Modal.getInstance(
+            document.getElementById("addProductModal")
+          );
+          modal.hide();
+          alert("Product added successfully!");
+          getdata();
+        } else {
+          alert("Failed to add product.");
+        }
       }
     })
     .catch((error) => {
@@ -128,5 +139,21 @@ function DeleteData(id) {
     })
     .catch((error) => {
       console.error("Error deleting product:", error.message);
+    });
+}
+
+function detailData(id) {
+  const params = {
+    action: "read",
+    id: id,
+  };
+
+  fetch(urlp + "?" + new URLSearchParams(params))
+    .then((response) => response.json())
+    .then((data) => {
+      for (let i = 0; i < data.data.length; i++) {}
+    })
+    .catch((error) => {
+      console.error("Error fetching product details:", error.message);
     });
 }
