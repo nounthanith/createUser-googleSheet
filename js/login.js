@@ -20,8 +20,7 @@ document
       for (let i = 0; i < data.data.length; i++) {
         if (email === data.data[i][2] && password == data.data[i][3]) {
           console.log("Login successful");
-          if (data.data[i][4] == "user")
-            window.location.href = "product.html"; 
+          if (data.data[i][4] == "user") window.location.href = "product.html";
           else if (data.data[i][4] == "admin")
             window.location.href = "user.html";
           else {
@@ -36,7 +35,6 @@ document
           return;
         }
       }
-      
     } catch (error) {
       console.error("Error fetching user data:", error);
       loginMessage.textContent =

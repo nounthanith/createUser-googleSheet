@@ -1,7 +1,8 @@
 const url =
-  "https://script.google.com/macros/s/AKfycbziGW3C4DgAwm5bjqydAnPZRUDOjSGqi2Nglq9gw8jU9OvlsaYnuxoDgK0BFQt3lOt8/exec";
+  "https://script.google.com/macros/s/AKfycbwiPp6yRsSGRAxDRi1a3ix3vcRl0qcYyH9d2t8F9iuAVwJ0hLxHaIuYg0xCROwr_NBg/exec";
 
 const userData = document.getElementById("userData");
+const userCount = document.getElementById("userCount");
 
 async function getdata() {
   try {
@@ -13,7 +14,7 @@ async function getdata() {
     for (let i = 0; i < data.data.length; i++) {
       userData.innerHTML += `
       <tr class="align-middle">
-        <th scope="row">#${data.data[i][0]}</th>
+        <th scope="row">${data.data[i][0]}</th>
         <td class="fw-bold">${data.data[i][1]}</td>
         <td class="text-primary cursor-pointer">${data.data[i][2]}</td>
         <td class="text-uppercase">${data.data[i][4]}</td>
@@ -28,6 +29,7 @@ async function getdata() {
             </button>
         </td>
       </tr>`;
+      document.getElementById("userCount").textContent = data.data.length;
     }
   } catch (error) {
     console.log(error.message);
@@ -35,21 +37,6 @@ async function getdata() {
 }
 
 getdata();
-
-function DeleteData(id) {
-  var params = {
-    action: "delete",
-    id: id,
-  };
-
-  fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
-    .then(response => response.json())
-
-    .then(data => {
-      getdata(); // Refresh table after delete
-      console.log(data);
-    });
-}
 
 document.getElementById("userForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -63,7 +50,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
 
   let params = {
     action: "insert",
-    id: Math.floor(Math.random() * 1000000),
+    id: Math.floor(Math.random() * 10000),
     name: name,
     email: email,
     password: password,
@@ -74,8 +61,41 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
   fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
     .then((response) => response.json())
     .then((data) => {
+      
+      document.getElementById("userForm").reset();
+      alert("User added successfully!", "", "success");
       getdata(); // Refresh table
-      document.getElementById("userForm").reset(); // Clear form
-      console.log(data);
     });
 });
+
+function DeleteData(id) {
+  Swal.fire({
+    title: "Do you want to delete this record?",
+    showDenyButton: true,
+    confirmButtonText: "Yes",
+    denyButtonText: "No",
+    icon: "warning",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      var params = {
+        action: "delete",
+        id: id,
+      };
+      fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
+        .then((response) => response.json())
+        .then((data) => {
+          // Call your refresh function here
+          getdata(); // or select(); if that's your function
+          console.log(data);
+          Swal.fire("Deleted!", "", "success");
+        })
+        .catch((error) => {
+          Swal.fire("Error deleting record.", "", "error");
+        });
+    } else if (result.isDenied) {
+      Swal.fire("Delete cancelled", "", "info");
+    }
+  });
+}
+
+

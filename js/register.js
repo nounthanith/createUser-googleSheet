@@ -11,7 +11,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
 
   const params = {
     action: "insert",
-    id: Math.floor(Math.random() * 1000000),
+    id: Math.floor(Math.random() * 10000),
     name: name,
     email: email,
     password: password,

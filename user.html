@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="stylesheet" href="./Style/style.css">
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
@@ -35,6 +35,46 @@
       </div>
     </div>
   </nav>
+
+  <!-- Count users -->
+  <div class="container py-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <p class="mb-1 fw-semibold" style="font-size: large;">Users</p>
+              <p id="userCount" class="text-success fs-4 mb-0"></p>
+            </div>
+            <i class="fa-solid fa-user fa-2x text-primary"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <p class="mb-1 fw-semibold" style="font-size: large;">Products</p>
+              <p id="productCount" class="text-success fs-4 mb-0"></p>
+            </div>
+            <i class="fa-solid fa-box fa-2x text-warning"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <p class="mb-1 fw-semibold" style="font-size: large;">Total Price</p>
+              <p id="totalPrice" class="text-success fs-4 mb-0"></p>
+            </div>
+            <i class="fa-solid fa-money-check-dollar fa-2x text-success"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <script src="./js/navbar.js"></script>
   <div class="container mt-5">

@@ -3,6 +3,8 @@ const urlp =
 
 const productData = document.getElementById("productData");
 const productDataUser = document.getElementById("productDataUser");
+const productCount = document.getElementById("productCount");
+const totalPrice = document.getElementById("totalPrice");
 
 async function getdata() {
   try {
@@ -51,6 +53,15 @@ async function getdata() {
             </div>
           </div>
         `;
+      }
+
+      if (productCount) {
+        productCount.innerHTML = rows.length;
+      }
+
+      if (totalPrice) {
+        const total = rows.reduce((sum, item) => sum + parseFloat(item[3]), 0);
+        totalPrice.innerHTML = total.toFixed(2) + "$";
       }
     }
   } catch (error) {
