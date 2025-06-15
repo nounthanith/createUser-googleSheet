@@ -26,9 +26,12 @@ async function getdata() {
               <img src="${row[5]}" class="card-img-top" alt="${row[1]}">
               <div class="card-body">
                 <h5 class="card-title fs-6 fs-md-2">${row[1]}</h5>
-                <p class="card-text small d-md-block text-wrap">${row[2]}</p>
-                <p class="text-success fw-bold mb-1">${row[3]}$</p>
-                <p class="card-text btn btn-outline-secondary btn-sm px-2 py-0">${row[4]}</p>
+                
+                <div class="d-flex justify-content-between mt-3">
+                  <p class="text-success fw-bold">${row[3]}$</p>
+                  <button class="btn btn-sm btn-primary">Add to card</button>
+                </div>
+                
               </div>
             </div>
           </div>
