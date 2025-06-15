@@ -12,18 +12,21 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./Style/style.css" />
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm px-0 py-4 px-md-5">
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary shadow-sm px-0 py-4 px-md-5"
+    >
       <div
         class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <!-- Logo -->
         <a class="navbar-brand fw-bold" href="#">MyStore</a>
 
-        <!-- Toggler (for small screens) -->
         <button
           class="navbar-toggler"
           type="button"
@@ -41,28 +44,71 @@
           class="collapse navbar-collapse justify-content-end"
           id="navbarSupportedContent"
         >
-          <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3" id="navbar">
-            <!-- Dynamic links will be injected here -->
-          </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0 d-flex gap-3" id="navbar"></ul>
         </div>
       </div>
     </nav>
-
-    <main class="container mt-5">
-      <h1 class="text-center mb-5">Product</h1>
-      <div class="d-flex gap-4 flex-wrap justify-content-center align-items-center" id="productDataUser">
-        <div class="card" style="width: 18rem;">
-          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 1">
-          <div class="card-body">
-            <h5 class="card-title">Product 1</h5>
-            <p class="card-text">Description for Product 1</p>
-            <p class="text-success fw-bold">10$</p>
-            <p class="card-text btn btn btn-outline-secondary btn-sm">Category 1</p>
+    <div class="container">
+      <div
+        id="autoScrollCarousel"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://www.aulastar.com/uploads/allimg/20250528/1-25052Q40150H6.jpg"
+              class="d-block w-100"
+              alt="Image 1"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://www.aulastar.com/uploads/allimg/20250208/1-25020Q14553232.jpg"
+              class="d-block w-100"
+              alt="Image 2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://www.aulastar.com/uploads/allimg/20240813/1-240Q31454239E.jpg"
+              class="d-block w-100"
+              alt="Image 3"
+            />
           </div>
         </div>
       </div>
+    </div>
+    <main class="container mt-5">
+      <h1 class="text-center mb-5">Product</h1>
+
+      <div class="row row-cols-2 row-cols-md-4 g-4" id="productDataUser">
+        <div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <!-- Repeat <div class="col">...</div> for more products -->
+      </div>
     </main>
+
+    <!-- my footer -->
+    <footer class="footer mt-5 py-4 bg-dark text-white">
+      <div class="container text-center">
+        <p class="mb-1">&copy; 2025 Group..</p>
+      </div>
+    </footer>
+
     <script src="./js/navbar.js"></script>
     <script src="./js/producAdmin.js"></script>
+    <script>
+      const myCarousel = document.querySelector("#autoScrollCarousel");
+      const carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 2500, 
+        ride: "carousel",
+        pause: false,
+        wrap: true,
+      });
+    </script>
   </body>
 </html>
