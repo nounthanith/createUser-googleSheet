@@ -5,10 +5,10 @@ const userData = document.getElementById("userData");
 const userCount = document.getElementById("userCount");
 
 async function getdata() {
- 
   const role = localStorage.getItem("role");
   if (role === "user") {
-    userData.innerHTML = '<td class="text-danger" colspan="8">No Permission!!!</td>';
+    userData.innerHTML =
+      '<td class="text-danger" colspan="8">No Permission!!!</td>';
     return;
   }
 
@@ -49,7 +49,6 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
 
   const localRole = localStorage.getItem("role");
   if (localRole === "user") {
-    // Show alert and stop
     if (typeof Swal !== "undefined") {
       alert("You don't have permission to add users.", "", "error");
     } else {
@@ -77,10 +76,9 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
   fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
     .then((response) => response.json())
     .then((data) => {
-      
       document.getElementById("userForm").reset();
       alert("User added successfully!", "", "success");
-      getdata(); // Refresh table
+      getdata();
     });
 });
 
@@ -100,8 +98,7 @@ function DeleteData(id) {
       fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
         .then((response) => response.json())
         .then((data) => {
-          // Call your refresh function here
-          getdata(); // or select(); if that's your function
+          getdata();
           console.log(data);
           Swal.fire("Deleted!", "", "success");
         })
@@ -113,5 +110,3 @@ function DeleteData(id) {
     }
   });
 }
-
-

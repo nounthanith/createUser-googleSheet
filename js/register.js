@@ -15,7 +15,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     name: name,
     email: email,
     password: password,
-    role: defaultRole = role || "user",
+    role: (defaultRole = role || "user"),
     created_at: new Date().toISOString(),
   };
 
@@ -23,8 +23,7 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
-        // Redirect to login page
-        window.location.href = "index.html"; // Change to your login page path
+        window.location.href = "index.html";
       } else {
         alert("Registration failed. Please try again.");
       }

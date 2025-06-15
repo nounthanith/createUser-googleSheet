@@ -14,7 +14,7 @@ async function getdata() {
     const role = localStorage.getItem("role");
 
     if (role === "user") {
-      // Show user view
+      // user view
       if (productDataUser) productDataUser.innerHTML = "";
 
       let userHTML = "";
@@ -40,7 +40,7 @@ async function getdata() {
       document.getElementById("productDataUser").innerHTML = userHTML;
 
       productDataUser.innerHTML = userHTML;
-      return; // stop here if user
+      return;
     }
 
     // Admin view
@@ -53,8 +53,8 @@ async function getdata() {
             <th>#${row[0]}</th>
             <td><img style="width:50px; height:50px" src="${row[5]}" alt="${row[1]}"></td>
             <td class="fw-bold text-uppercase text-truncate truncate-2-lines" style="max-width: 200px;">${row[1]}</td>
-            <td class="text-primary cursor-pointer">${row[2]}</td>
-            <td class="text-uppercase">${row[3]}$</td>
+            <td class="">${row[2]}</td>
+            <td class="text-uppercase text-primary cursor-pointer">${row[3]}$</td>
             <td>${row[4]}</td>
             <td>${row[6]}</td>
             <td>
@@ -142,7 +142,7 @@ function DeleteData(id) {
   fetch(urlp + "?" + new URLSearchParams(params), { method: "POST" })
     .then((response) => response.json())
     .then((data) => {
-      getdata(); // Refresh table after delete
+      getdata();
       console.log(data);
     })
     .catch((error) => {
