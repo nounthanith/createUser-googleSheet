@@ -27,7 +27,7 @@ async function getdata() {
               <div class="card-body">
                 <h5 class="card-title fs-6 fs-md-2">${row[1]}</h5>
                 
-                <div class="d-flex justify-content-between mt-3">
+                <div class="d-block d-md-flex justify-content-between mt-3">
                   <p class="text-success fw-bold">${row[3]}$</p>
                   <button class="btn btn-sm btn-primary">Add to card</button>
                 </div>
@@ -143,25 +143,26 @@ function DeleteData(id) {
     .then((response) => response.json())
     .then((data) => {
       getdata();
-      console.log(data);
+      // console.log(data);
     })
     .catch((error) => {
       console.error("Error deleting product:", error.message);
     });
 }
 
-function detailData(id) {
-  const params = {
-    action: "read",
-    id: id,
-  };
+// function detailData(id) {
+//   const params = {
+//     action: "update",
+//     id: id,
+//   };
 
-  fetch(urlp + "?" + new URLSearchParams(params))
-    .then((response) => response.json())
-    .then((data) => {
-      for (let i = 0; i < data.data.length; i++) {}
-    })
-    .catch((error) => {
-      console.error("Error fetching product details:", error.message);
-    });
-}
+//   fetch(urlp + "?" + new URLSearchParams(params))
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // window.location.href = "detail.html"
+//       console.log(data)
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching product details:", error.message);
+//     });
+// }
