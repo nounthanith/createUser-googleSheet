@@ -27,7 +27,7 @@ async function getdata() {
         <td>${data.data[i][5]}</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
-            <button onclick="DeleteData(${data.data[i][0]})" class="btn btn-danger btn-sm">
+            <button onclick="DeleteDataUser(${data.data[i][0]})" class="btn btn-danger btn-sm">
               <i class="fa-solid fa-trash"></i>
             </button>
             <button class="btn btn-primary btn-sm">
@@ -82,31 +82,17 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     });
 });
 
-function DeleteData(id) {
-  Swal.fire({
-    title: "Do you want to delete this record?",
-    showDenyButton: true,
-    confirmButtonText: "Yes",
-    denyButtonText: "No",
-    icon: "warning",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      var params = {
-        action: "delete",
-        id: id,
-      };
-      fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
-        .then((response) => response.json())
-        .then((data) => {
-          getdata();
-          console.log(data);
-          Swal.fire("Deleted!", "", "success");
-        })
-        .catch((error) => {
-          Swal.fire("Error deleting record.", "", "error");
-        });
-    } else if (result.isDenied) {
-      Swal.fire("Delete cancelled", "", "info");
-    }
-  });
+function DeleteDataUser(id) {
+  var params = {
+    action: "delete",
+    id: id,
+  };
+  // console.log(id)
+
+  fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
+    .then((response) => response.json())
+    .then((data) => {
+      getdata()
+      // console.log(data);
+    });
 }
