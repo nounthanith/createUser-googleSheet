@@ -6,7 +6,7 @@ const productDataUser = document.getElementById("productDataUser");
 const productCount = document.getElementById("productCount");
 const totalPrice = document.getElementById("totalPrice");
 
-async function getdata() {
+async function getProduct() {
   try {
     const res = await fetch(urlp + "?action=read");
     const data = await res.json();
@@ -59,7 +59,7 @@ async function getdata() {
             <td>${row[6]}</td>
             <td>
               <div class="d-flex gap-2 justify-content-center">
-                <button onclick="DeleteData(${row[0]})" class="btn btn-danger btn-sm">
+                <button onclick="DeleteProduct(${row[0]})" class="btn btn-danger btn-sm">
                   <i class="fa-solid fa-trash"></i>
                 </button>
                 <button onclick="detailData(${row[0]})" class="btn btn-primary btn-sm">
@@ -84,7 +84,7 @@ async function getdata() {
   }
 }
 
-getdata();
+getProduct();
 
 document.getElementById("productForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -121,19 +121,37 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
             document.getElementById("addProductModal")
           );
           modal.hide();
-          alert("Product added successfully!");
-          getdata();
+          alert("Product added successfully!")
+          // Swal.fire({
+          //   title: "Success",
+          //   text: "Product add successfully.🙏",
+          //   icon: "success",
+          //   confirmButtonText: "Back",
+          // });
+          location.reload();
+          getProduct();
         } else {
-          alert("Failed to add product.");
+          // alert("Failed to add product.");
+          Swal.fire({
+            title: "Fail",
+            text: "Fail to add!!!",
+            icon: "error",
+            confirmButtonText: "Back",
+          });
         }
       }
     })
     .catch((error) => {
-      alert("Error: " + error.message);
+      Swal.fire({
+        title: "Fail",
+        text: error.message,
+        icon: "error",
+        confirmButtonText: "Back",
+      });
     });
 });
 
-function DeleteData(id) {
+function DeleteProduct(id) {
   const params = {
     action: "delete",
     id: id,
@@ -142,7 +160,13 @@ function DeleteData(id) {
   fetch(urlp + "?" + new URLSearchParams(params), { method: "POST" })
     .then((response) => response.json())
     .then((data) => {
-      getdata();
+      getProduct();
+      Swal.fire({
+        title: "Delete",
+        text: "Delete successfully.",
+        icon: "success",
+        confirmButtonText: "Back",
+      });
       // console.log(data);
     })
     .catch((error) => {
@@ -152,14 +176,14 @@ function DeleteData(id) {
 
 // function detailData(id) {
 //   const params = {
-//     action: "update",
+//     action: "read",
 //     id: id,
 //   };
 
 //   fetch(urlp + "?" + new URLSearchParams(params))
 //     .then((response) => response.json())
 //     .then((data) => {
-//       // window.location.href = "detail.html"
+//       window.location.href = "detail.html"
 //       console.log(data)
 //     })
 //     .catch((error) => {

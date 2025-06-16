@@ -15,6 +15,7 @@ async function getdata() {
   try {
     const res = await fetch(url + "?action=read");
     const data = await res.json();
+    // console.log(data)
     userData.innerHTML = "";
 
     for (let i = 0; i < data.data.length; i++) {
@@ -50,9 +51,19 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
   const localRole = localStorage.getItem("role");
   if (localRole === "user") {
     if (typeof Swal !== "undefined") {
-      alert("You don't have permission to add users.", "", "error");
+      Swal.fire({
+        title: "Error!",
+        text: "You don't have permission to add user!!!",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
     } else {
-      alert("You don't have permission to add users.");
+      Swal.fire({
+        title: "Error!",
+        text: "You don't have permission to add user!!!",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
     }
     return;
   }
@@ -77,7 +88,12 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("userForm").reset();
-      alert("User added successfully!", "", "success");
+      Swal.fire({
+        title: "Success",
+        text: "User add successfully.",
+        icon: "success",
+        confirmButtonText: "Back",
+      });
       getdata();
     });
 });
@@ -92,7 +108,13 @@ function DeleteDataUser(id) {
   fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
     .then((response) => response.json())
     .then((data) => {
-      getdata()
+      Swal.fire({
+        title: "Delete",
+        text: "Delete successfully.",
+        icon: "success",
+        confirmButtonText: "Back",
+      });
+      getdata();
       // console.log(data);
     });
 }
