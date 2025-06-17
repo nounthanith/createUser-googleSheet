@@ -212,7 +212,7 @@ function getCartData() {
       const cartCount = document.getElementById("cartCount");
       // console.log("Cart data length:", cartData.length);
       // console.log("Cart data content:", cartData[0].userId);
-      cartTable.innerHTML = "<tr><td colspan='6' class='text-center'>No items in cart</td></tr>"; // Clear existing table content
+      cartTable.innerHTML = ""; // Clear existing table content
       for (let i = 0; i < cartData.length; i++) {
         cartCount.innerHTML = cartData.length;
         const row = cartData[i];

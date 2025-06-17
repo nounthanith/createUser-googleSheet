@@ -3,15 +3,20 @@ const navItems = [
     name: "Home",
     href: "product.html",
   },
+
+  {
+    name: "Admin",
+    href: "user.html",
+  },
+  {
+    name: "About Us",
+    href: "about.html",
+    target: "_blank",
+  },
   {
     name: "Login",
     href: "index.html",
   },
-  {
-    name: "Admin",
-    href: "user.html",
-  }
-  
 ];
 
 const navbar = document.getElementById("navbar");
@@ -19,6 +24,7 @@ navItems.forEach((item) => {
   const navLink = document.createElement("a");
   navLink.className = "nav-link";
   navLink.href = item.href;
+  navLink.target = item.target || "_self";
   navLink.textContent = item.name;
   navbar.appendChild(navLink);
 });
