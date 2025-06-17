@@ -1,6 +1,6 @@
 # Google Sheet API User & Product Management
 
-This project is a web application for managing users and products using a Google Apps Script backend and Google Sheets as a database. It features user registration, login, product management, and admin/user role handling.
+This website project is my group assigment that i study at NUBB univercity of Battambang. In semester 2 of Year 2. It is my final project.
 
 ## Features
 
@@ -14,6 +14,8 @@ This project is a web application for managing users and products using a Google
 
 - HTML, CSS, JavaScript (Frontend)
 - Bootstrap 5
+- SweetAlert2 (alert message)
+- Font Awesome (icon)
 - Google Apps Script (Backend)
 - Google Sheets (Database)
 
@@ -22,10 +24,10 @@ This project is a web application for managing users and products using a Google
 1. **Clone this repository.**
 2. **Set up your Google Apps Script:**
    - Deploy a new Apps Script linked to a Google Sheet.
-   - Copy the script code for handling `insert`, `read`, and `delete` actions.
+   - Copy the script code for handling `insert`, `read`, `update`, `getById`, and `delete` actions.
    - Deploy as a web app and get the API URL.
 3. **Update the API URL:**
-   - Replace the `url` variable in your JS files with your Apps Script web app URL.
+   - Replace the `url` or `urlp` variable in your JS files with your Apps Script web app URL. Note: urlp is api of product.
 
 ## Usage
 
@@ -41,17 +43,18 @@ This project is a web application for managing users and products using a Google
 /register.html      # Registration page
 /login.html         # Login page
 /user.html          # User dashboard
-/userAdmin.html     # Admin dashboard
-/main.js            # Main JS logic
+/user.html          # Admin dashboard
+/user.js            # Main JS logic
 /login.js           # Login logic
 /producAdmin.js     # Product admin logic
+/page404.html       # Error page
+/about.html         # Team Member
+/product.detail     # Product Detail
+/product.js         # Product Detail Logic
 ```
-
-## Notes
-
-- Make sure your Google Sheet columns match the order expected by the Apps Script.
-- For security, do not use this as-is for production. Passwords are stored in plain text for demo purposes.
 
 ## License
 
 MIT
+
+## Thank You!!
