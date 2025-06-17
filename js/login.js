@@ -20,7 +20,9 @@ document
       for (let i = 0; i < data.data.length; i++) {
         if (email === data.data[i][2] && password == data.data[i][3]) {
           localStorage.setItem("role", data.data[i][4]);
-
+          localStorage.setItem("userId", data.data[i][0]);
+          localStorage.setItem("userName", data.data[i][1]);
+          localStorage.setItem("userEmail", data.data[i][2]);
           console.log("Login successful");
           if (data.data[i][4] == "user") window.location.href = "product.html";
           else if (data.data[i][4] == "admin")

@@ -200,42 +200,39 @@ function detailData(id) {
       Swal.fire("Error fetching product details", error.message, "error");
     });
 }
+function getCartData() {
 
-  fetch(urlp + "?" + new URLSearchParams(params))
-    .then((response) => response.json())
+  fetch("https://script.google.com/macros/s/AKfycbwXBD0w1-R6JFgUEbysMZgsuYpuPIBdQOyxzDFBPin1vBVeBtFhoBvEreQhclkcnH4xGg/exec?action=read")
+    .then((res) => res.json())
     .then((data) => {
-      const product = data.data[0];
-      if (product) {
-        document.getElementById("nameProduct").value = product[1];
-        document.getElementById("descriptionProduct").value = product[2];
-        document.getElementById("priceProduct").value = product[3];
-        document.getElementById("categoryProduct").value = product[4];
-        document.getElementById("imageProduct").value = product[5];
+      console.log("Cart data:", data);
+      const cartData = data.data;
+      const cartTable = document.getElementById("cartTable");
+      console.log("Cart data length:", cartData.length);
+      console.log("Cart data content:", cartData[0].userId);
 
-        const modal = new bootstrap.Modal(
-          document.getElementById("addProductModal")
-        );
-        modal.show();
-      } else {
-        Swal.fire("Product not found", "", "error");
+      for(let i = 0; i < cartData.length; i++) {
+        const row = cartData[i];
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${i + 1}</td>
+          <td>${row.userId}</td>
+          <td>${row.userName}</td>
+          <td>${row.userEmail}</td>
+          <td>${row.productId}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="removeFromCart('${row.id}')"><icon class="fas fa-trash"></icon></button></td>
+        `;
+        cartTable.appendChild(tr);
       }
+
+      
     })
     .catch((error) => {
-      Swal.fire("Error fetching product details", error.message, "error");
+      console.error("Error fetching cart data:", error);
     });
+}
 
-
-
-function addToCart(productId) {
- 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
- 
-  cart.push(productId);
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  if (typeof Swal !== "undefined") {
-    Swal.fire("Added to cart!", "", "success");
-  } else {
-    alert("Added to cart!");
-  }
+const role = localStorage.getItem("role");
+if (role === "admin") {
+  getCartData();
 }
