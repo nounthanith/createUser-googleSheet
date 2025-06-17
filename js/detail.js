@@ -19,7 +19,7 @@ async function loadProduct() {
                 <img src="${product[5]}" class="card-img-top" alt="${product[1]}" style="border: 1px solid #ddd; object-fit:cover; max-height:300px;">
                 <div class="card-body">
                 <h2 class="card-title">${product[1]}</h2>
-                <p class="card-text mb-2">${product[2]}</p>
+                <p class="card-text mb-2">Description: ${product[2]}</p>
                 <p class="fw-bold text-success mb-2" style="font-size: 1.2rem;">Price: ${product[3]}$</p>
                 <p class="mb-3"><span class="badge bg-secondary">Category: ${product[4]}</span></p>
                 <button class="btn btn-success w-100" onclick="addToCart('${product[0]}')">
