@@ -21,7 +21,7 @@ async function getdata() {
     for (let i = 0; i < data.data.length; i++) {
       userData.innerHTML += `
       <tr class="align-middle">
-        <th scope="row">#${data.data[i][0]}</th>
+        <th scope="row">#${i+1}</th>
         <td class="fw-bold">${data.data[i][1]}</td>
         <td class="text-primary cursor-pointer">${data.data[i][2]}</td>
         <td class="text-uppercase">${data.data[i][4]}</td>

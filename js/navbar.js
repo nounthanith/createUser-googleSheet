@@ -3,15 +3,14 @@ const navItems = [
     name: "Home",
     href: "product.html",
   },
-
-  {
-    name: "Admin",
-    href: "user.html",
-  },
   {
     name: "About Us",
     href: "about.html",
     target: "_blank",
+  },
+  {
+    name: "Admin",
+    href: "user.html",
   },
   {
     name: "Login",
