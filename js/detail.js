@@ -62,6 +62,7 @@ function addToCart(productId) {
   // Prepare request parameters
   const params = {
     action: "insert",
+    id: Math.floor(Math.random() * 10000),
     userId: userId,
     userName: userName,
     userEmail: userEmail,
@@ -70,7 +71,7 @@ function addToCart(productId) {
 
   // Send data to Google Apps Script
   fetch(
-    "https://script.google.com/macros/s/AKfycbzpppnLK2bQc9ka2nO9Xqb2TSjb6Te15brSClPimU6QgkFP0ISFOmHO_d0cTBddf_l-WA/exec?" +
+    "https://script.google.com/macros/s/AKfycbywNOb25EKna2chbreFfuFOfn6j0r33x9oXjQ5XodboTGsZSkjDt6nIP2XxWSMg7Svuwg/exec?" +
       new URLSearchParams(params),
     {
       method: "POST",

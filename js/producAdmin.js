@@ -201,31 +201,33 @@ function detailData(id) {
     });
 }
 function getCartData() {
-
-  fetch("https://script.google.com/macros/s/AKfycbwXBD0w1-R6JFgUEbysMZgsuYpuPIBdQOyxzDFBPin1vBVeBtFhoBvEreQhclkcnH4xGg/exec?action=read")
+  fetch(
+    "https://script.google.com/macros/s/AKfycbwXBD0w1-R6JFgUEbysMZgsuYpuPIBdQOyxzDFBPin1vBVeBtFhoBvEreQhclkcnH4xGg/exec?action=read"
+  )
     .then((res) => res.json())
     .then((data) => {
       console.log("Cart data:", data);
       const cartData = data.data;
       const cartTable = document.getElementById("cartTable");
-      console.log("Cart data length:", cartData.length);
-      console.log("Cart data content:", cartData[0].userId);
-
-      for(let i = 0; i < cartData.length; i++) {
+      const cartCount = document.getElementById("cartCount");
+      // console.log("Cart data length:", cartData.length);
+      // console.log("Cart data content:", cartData[0].userId);
+      cartTable.innerHTML = "<tr><td colspan='6' class='text-center'>No items in cart</td></tr>"; // Clear existing table content
+      for (let i = 0; i < cartData.length; i++) {
+        cartCount.innerHTML = cartData.length;
         const row = cartData[i];
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${i + 1}</td>
-          <td>${row.userId}</td>
-          <td>${row.userName}</td>
-          <td>${row.userEmail}</td>
-          <td>${row.productId}</td>
-          <td><button class="btn btn-danger btn-sm" onclick="removeFromCart('${row.id}')"><icon class="fas fa-trash"></icon></button></td>
-        `;
-        cartTable.appendChild(tr);
-      }
 
-      
+        cartTable.innerHTML += `
+          <tr>
+            <td>${row.id}</td>
+            <td>${row.userId}</td>
+            <td class="text-success fw-bold">${row.userName}</td>
+            <td class="text-primary cursor-pointer">${row.userEmail}</td>
+            <td>${row.productId}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="DeleteCartData('${row.id}')"><icon class="fas fa-trash"></icon></button></td>
+          </tr>
+        `;
+      }
     })
     .catch((error) => {
       console.error("Error fetching cart data:", error);
@@ -235,4 +237,25 @@ function getCartData() {
 const role = localStorage.getItem("role");
 if (role === "admin") {
   getCartData();
+}
+
+function DeleteCartData(id) {
+  var url = "https://script.google.com/macros/s/AKfycbywNOb25EKna2chbreFfuFOfn6j0r33x9oXjQ5XodboTGsZSkjDt6nIP2XxWSMg7Svuwg/exec";
+  var params = {
+    action: "delete",
+    id: id,
+  };
+
+  fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
+    .then((response) => response.json())
+    .then((data) => {
+      Swal.fire({
+        title: "Delete",
+        text: "Delete successfully.",
+        icon: "success",
+        confirmButtonText: "Back",
+      });
+      getCartData();
+      // console.log(data);
+    });
 }

@@ -39,10 +39,10 @@
     </div>
   </nav>
 
-  <!-- Count users -->
+  <!-- Dashboard -->
   <div class="container py-4">
     <div class="row g-4">
-      <div class="col-md-4">
+      <div class="col-md-3">  <!-- Changed from col-md-4 to col-md-3 -->
         <div class="card shadow-sm h-100">
           <div class="card-body d-flex align-items-center justify-content-between">
             <div>
@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">  <!-- Changed from col-md-4 to col-md-3 -->
         <div class="card shadow-sm h-100">
           <div class="card-body d-flex align-items-center justify-content-between">
             <div>
@@ -64,7 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">  <!-- Changed from col-md-4 to col-md-3 -->
         <div class="card shadow-sm h-100">
           <div class="card-body d-flex align-items-center justify-content-between">
             <div>
@@ -75,9 +75,19 @@
           </div>
         </div>
       </div>
+      <div class="col-md-3">  <!-- Changed from col-md-4 to col-md-3 -->
+        <div class="card shadow-sm h-100">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <p class="mb-1 fw-semibold" style="font-size: large;">Cart Count</p>  <!-- Fixed title -->
+              <p id="cartCount" class="text-success fs-4 mb-0">0</p>
+            </div>
+            <i class="fa-solid fa-cart-shopping fa-2x text-info"></i>  <!-- Changed icon to match cart -->
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
+</div>
 
   <script src="./js/navbar.js"></script>
   <div class="container mt-5">
@@ -217,7 +227,7 @@
         </thead>
         <tbody id="cartTable" class="text-center">
           <tr>
-            <td class="text-danger" colspan="8">No Permission!!!</td>
+            <td class="text-danger" colspan="6">No Permission!!!</td>
           </tr>
         </tbody>
       </table>
