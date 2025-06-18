@@ -202,15 +202,15 @@ function detailData(id) {
 }
 function getCartData() {
   fetch(
-    "https://script.google.com/macros/s/AKfycbwXBD0w1-R6JFgUEbysMZgsuYpuPIBdQOyxzDFBPin1vBVeBtFhoBvEreQhclkcnH4xGg/exec?action=read"
+    "https://script.google.com/macros/s/AKfycbzND8OwT0Y8tkyApPfgPPPqXprxi0cjRYw8Gef-6DvTBtV7iKv5qoa-vuAZVIqb32xXOw/exec?action=read"
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log("Cart data:", data);
+      // console.log("Cart data:", data);
       const cartData = data.data;
       const cartTable = document.getElementById("cartTable");
       const cartCount = document.getElementById("cartCount");
-      console.log("Cart data length:", cartData.length);
+      // console.log("Cart data length:", cartData.length);
       // console.log("Cart data content:", cartData[0].userId);
       cartTable.innerHTML = "";
       for (let i = 0; i < cartData.length; i++) {
@@ -219,12 +219,15 @@ function getCartData() {
 
         cartTable.innerHTML += `
           <tr>
-            <td class="fw-bold">#${i+1}</td>
+            <td class="fw-bold">#${i + 1}</td>
             <td >${row.userId}</td>
             <td class="text-success fw-bold">${row.userName}</td>
             <td class="text-primary cursor-pointer">${row.userEmail}</td>
             <td class="text-danger">${row.productId}</td>
-            <td><button class="btn btn-danger btn-sm" onclick="DeleteCartData('${row.id}')"><icon class="fas fa-trash"></icon></button></td>
+            <td class="text-success fw-bold">${row.productPrice}$</td>
+            <td><button class="btn btn-danger btn-sm" onclick="DeleteCartData('${
+              row.id
+            }')"><icon class="fas fa-trash"></icon></button></td>
           </tr>
         `;
       }
@@ -240,7 +243,8 @@ if (role === "admin") {
 }
 
 function DeleteCartData(id) {
-  var url = "https://script.google.com/macros/s/AKfycbywNOb25EKna2chbreFfuFOfn6j0r33x9oXjQ5XodboTGsZSkjDt6nIP2XxWSMg7Svuwg/exec";
+  var url =
+    "https://script.google.com/macros/s/AKfycbywNOb25EKna2chbreFfuFOfn6j0r33x9oXjQ5XodboTGsZSkjDt6nIP2XxWSMg7Svuwg/exec";
   var params = {
     action: "delete",
     id: id,

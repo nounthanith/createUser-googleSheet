@@ -25,7 +25,7 @@ const getCartItems = () => fetch(url)
           <p class="cart-item-user fw-bold">User Name: <span class="fw-semibold text-primary">${item.userName}</span></p>
           <p class="cart-item-email">User Email: <span class="fw-semibold text-primary">${item.userEmail}</span></p>
           <p class="cart-item-product">Product ID: <span class="fw-semibold text-warning">${item.productId}</span></p>
-          <p class="cart-item-id">Cart ID: <span class="fw-semibold text-danger">${item.id}</span></p>
+        
           <p class="cart-item-date">Date: <span class="fw-semibold text-success">${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}</span></p>
          <p> price: <span class="fw-semibold text-success">$${item.productPrice}</span></p>
         </div>
