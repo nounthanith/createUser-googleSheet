@@ -21,8 +21,8 @@ const getCartItems = () => fetch(url)
       const itemDiv = document.createElement("div");
       itemDiv.classList.add("cart-item");
       itemDiv.innerHTML = `
-        <div class="cart-item-details">
-            <h3 class="text-center">Thank you For Your Order</h3>
+        <div class="cart-item-details container">
+            <h3 class="text-center text-decoration-underline">Thank you For Your Order</h3>
           <p class="cart-item-user fw-bold">User Name: <span class="fw-semibold text-primary">${item.userName}</span></p>
           <p class="cart-item-email">User Email: <span class="fw-semibold text-primary">${item.userEmail}</span></p>
           <p class="cart-item-product">Product ID: <span class="fw-semibold text-warning">${item.productId}</span></p>
@@ -33,6 +33,8 @@ const getCartItems = () => fetch(url)
         <button class="btn btn-danger btn-sm" onclick="DeleteCartData('${item.id}')">
           <i class="fas fa-trash"></i> Cancel Order
         </button>
+        <hr>
+        <p class="text-center">Thank you for shopping with us! I will contact you by your email: <a class="fw-semibold text-primary" href="mailto:${item.userEmail}">${item.userEmail}</a></p>
         <hr>
       `;
       cartItems.appendChild(itemDiv);

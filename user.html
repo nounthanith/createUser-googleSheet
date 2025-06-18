@@ -185,6 +185,46 @@
       </div>
     </div>
   </div>
+  <!-- Edit -->
+   <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editProductForm">
+          <!-- Hidden input for Product ID -->
+          <input type="hidden" id="editProductId">
+          <div class="mb-3">
+            <label for="editProductName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="editProductName">
+          </div>
+          <div class="mb-3">
+            <label for="editProductDescription" class="form-label">Description</label>
+            <input type="text" class="form-control" id="editProductDescription">
+          </div>
+          <div class="mb-3">
+            <label for="editProductPrice" class="form-label">Price</label>
+            <input type="text" class="form-control" id="editProductPrice">
+          </div>
+          <div class="mb-3">
+            <label for="editProductCategory" class="form-label">Category</label>
+            <input type="text" class="form-control" id="editProductCategory">
+          </div>
+          <div class="mb-3">
+            <label for="editProductImage" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="editProductImage">
+          </div>
+          <button type="submit" class="btn btn-success">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- porduct table -->
   <div class="container mb-5">
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover align-middle">

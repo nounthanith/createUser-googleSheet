@@ -59,7 +59,11 @@ async function getProduct() {
                 <button onclick="DeleteProduct(${row[0]})" class="btn btn-danger btn-sm">
                   <i class="fa-solid fa-trash"></i>
                 </button>
-                <button onclick="detailData(${row[0]})" class="btn btn-primary btn-sm">
+                <button 
+                  class="btn btn-primary btn-sm" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#editProductModal"
+                  onclick="loadProductForEdit('${row[0]}')">
                   <i class="fa-solid fa-pen-to-square"></i>
                 </button>
               </div>
@@ -262,3 +266,75 @@ function DeleteCartData(id) {
       getCartData();
     });
 }
+
+// function saveUpdatedProduct() {
+//   const id = document.getElementById("productId").value; // You should store the editing product's ID in a hidden field
+//   const name = document.getElementById("nameProduct").value;
+//   const description = document.getElementById("descriptionProduct").value;
+//   const price = document.getElementById("priceProduct").value;
+//   const category = document.getElementById("categoryProduct").value;
+//   const image = document.getElementById("imageProduct").value;
+
+//   const params = {
+//     action: "update",
+//     id: id,
+//     name: name,
+//     description: description,
+//     price: price,
+//     category: category,
+//     image_url: image,
+//   };
+
+//   fetch(urlp + "?" + new URLSearchParams(params), {
+//     method: "POST",
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       if (data.status === "success") {
+//         Swal.fire("Success", "Product updated successfully!", "success");
+//         getProduct();
+
+//         const modal = bootstrap.Modal.getInstance(
+//           document.getElementById("addProductModal")
+//         );
+//         modal.hide();
+//       } else {
+//         Swal.fire("Failed", "Product update failed!", "error");
+//       }
+//     })
+//     .catch((error) => {
+//       Swal.fire("Error", error.message, "error");
+//     });
+// }
+
+
+// function loadProductForEdit(id) {
+//   const params = {
+//     action: "getById",
+//     id: id,
+//   };
+
+//   fetch(urlp + "?" + new URLSearchParams(params))
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const product = data.data[0];
+//       if (product) {
+//         document.getElementById("productId").value = product[0]; // set ID
+//         document.getElementById("nameProduct").value = product[1];
+//         document.getElementById("descriptionProduct").value = product[2];
+//         document.getElementById("priceProduct").value = product[3];
+//         document.getElementById("categoryProduct").value = product[4];
+//         document.getElementById("imageProduct").value = product[5];
+
+//         const modal = new bootstrap.Modal(
+//           document.getElementById("addProductModal")
+//         );
+//         modal.show();
+//       } else {
+//         Swal.fire("Product not found", "", "error");
+//       }
+//     })
+//     .catch((error) => {
+//       Swal.fire("Error fetching product details", error.message, "error");
+//     });
+// }
