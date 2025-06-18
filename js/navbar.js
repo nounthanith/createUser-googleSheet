@@ -4,6 +4,10 @@ const navItems = [
     href: "product.html",
   },
   {
+    name: "Cart",
+    href: "cart.html",
+  },
+  {
     name: "About Us",
     href: "about.html",
     target: "_blank",

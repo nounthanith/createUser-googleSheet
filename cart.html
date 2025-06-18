@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
-     <!-- navbar -->
+    <!-- navbar -->
     <nav
       class="navbar navbar-expand-lg bg-body-tertiary shadow-sm px-0 py-4 px-md-5"
     >
@@ -46,18 +46,38 @@
       </div>
     </nav>
 
-
-    <h1>Your Shopping Cart</h1>
-    <div class="row">
-        <div class="card">
-            <div class="card-body" id="cartItems"></div>
+    <h1 class="text-center mt-5">Your Shopping Cart</h1>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <div class="card-body" id="cartItems">
+            <div class="text-center mt-5">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p>Loading cart items...</p>
+            </div>
+          </div>
+          
         </div>
+      </div>
+
+      <div class="fw-bold " >Total: <span id="cartTotal">0</span> items</div><hr>
+      <button
+        onclick="checkoutButton()"
+        class="btn btn-primary"
+        id="checkoutButton"
+      >
+        Checkout
+      </button>
     </div>
-    
-    <div class="fw-bold" id="cartTotal"></div>
-    <button id="checkoutButton">Checkout</button>
 
     <script src="./js/shippingCart.js"></script>
     <script src="./js/navbar.js"></script>
+    <script>
+      const checkoutButton = () => {
+        window.location.href = "product.html";
+      };
+    </script>
   </body>
 </html>

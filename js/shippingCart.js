@@ -13,16 +13,18 @@ fetch(url)
       item.userId === userId || item.userEmail === userEmail
     );
     
+    cartItems.innerHTML = ""; 
     filteredData.forEach(item => {
-        cartTotal.textContent = `Total: ${filteredData.length} items`;
+        cartTotal.textContent = filteredData.length;
         console.log(item);
       const itemDiv = document.createElement("div");
       itemDiv.classList.add("cart-item");
       itemDiv.innerHTML = `
         <div class="cart-item-details">
-          <p class="cart-item-user">User: ${item.userName} (${item.userEmail})</p>
-          <p class="cart-item-product">Product ID: ${item.productId}</p>
-            <p class="cart-item-id">Cart ID: ${item.id}</p>
+          <p class="cart-item-user fw-bold">User Name: <span class="fw-semibold text-primary">${item.userName}</span></p>
+          <p class="cart-item-email">User Email: <span class="fw-semibold text-primary">${item.userEmail}</span></p>
+          <p class="cart-item-product">Product ID: <span class="fw-semibold text-warning">${item.productId}</span></p>
+          <p class="cart-item-id">Cart ID: <span class="fw-semibold text-danger">${item.id}</span></p>
         </div>
         <button class="btn btn-danger btn-sm" onclick="DeleteCartData('${item.id}')">
           <i class="fas fa-trash"></i> Remove
@@ -35,3 +37,23 @@ fetch(url)
   .catch(error => {
     console.error('Error fetching data:', error);
   });
+
+  function DeleteCartData(id) {
+  var url = "https://script.google.com/macros/s/AKfycbywNOb25EKna2chbreFfuFOfn6j0r33x9oXjQ5XodboTGsZSkjDt6nIP2XxWSMg7Svuwg/exec";
+  var params = {
+    action: "delete",
+    id: id,
+  };
+
+  fetch(url + "?" + new URLSearchParams(params), { method: "POST" })
+    .then((response) => response.json())
+    .then((data) => {
+      Swal.fire({
+        title: "Delete",
+        text: "Delete successfully.",
+        icon: "success",
+        confirmButtonText: "Back",
+      });
+      window.location.reload();
+    });
+}
