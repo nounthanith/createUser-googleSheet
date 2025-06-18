@@ -4,11 +4,18 @@ const urldetail =
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 
+
 async function loadProduct() {
   try {
     const res = await fetch(`${urldetail}?action=getById&id=${productId}`);
     const data = await res.json();
     const product = data.data && data.data[0];
+    // console.log(product);
+
+    const priceProduct = product[3]
+    console.log(priceProduct);
+    localStorage.setItem("productPrice", priceProduct);
+
 
     if (product) {
       document.getElementById("productDetail").innerHTML = `
@@ -55,13 +62,17 @@ function addToCart(productId) {
   const userId = localStorage.getItem("userId");
   const userName = localStorage.getItem("userName");
   const userEmail = localStorage.getItem("userEmail");
+  const productPrice = localStorage.getItem("productPrice");
+  // const productName = localStorage.getItem("productName");
+  
 
   // console.log("User ID:", userId);
   // console.log("User Name:", userName);
   // console.log("User Email:", userEmail);
   // console.log("Product added to cart:", productId);
+  // console.log("Product Price:", productPrice);
+  // console.log("Product Name:", productName);
 
-  // Prepare request parameters
   const params = {
     action: "insert",
     id: Math.floor(Math.random() * 10000),
@@ -69,11 +80,11 @@ function addToCart(productId) {
     userName: userName,
     userEmail: userEmail,
     productId: productId,
+    productPrice: productPrice,
   };
 
-  // Send data to Google Apps Script
   fetch(
-    "https://script.google.com/macros/s/AKfycbywNOb25EKna2chbreFfuFOfn6j0r33x9oXjQ5XodboTGsZSkjDt6nIP2XxWSMg7Svuwg/exec?" +
+    "https://script.google.com/macros/s/AKfycbzND8OwT0Y8tkyApPfgPPPqXprxi0cjRYw8Gef-6DvTBtV7iKv5qoa-vuAZVIqb32xXOw/exec?" +
       new URLSearchParams(params),
     {
       method: "POST",
