@@ -22,6 +22,7 @@ const getCartItems = () => fetch(url)
       itemDiv.classList.add("cart-item");
       itemDiv.innerHTML = `
         <div class="cart-item-details">
+            <h3 class="text-center">Thank you For Your Order</h3>
           <p class="cart-item-user fw-bold">User Name: <span class="fw-semibold text-primary">${item.userName}</span></p>
           <p class="cart-item-email">User Email: <span class="fw-semibold text-primary">${item.userEmail}</span></p>
           <p class="cart-item-product">Product ID: <span class="fw-semibold text-warning">${item.productId}</span></p>
