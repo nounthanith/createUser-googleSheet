@@ -256,6 +256,5 @@ function DeleteCartData(id) {
         confirmButtonText: "Back",
       });
       getCartData();
-      // console.log(data);
     });
 }

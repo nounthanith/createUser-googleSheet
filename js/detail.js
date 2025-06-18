@@ -47,7 +47,9 @@ function addToCart(productId) {
     title: "Success",
     text: "Add to cart successfully. Thank you for your purchase!🥺❤️",
     icon: "success",
-    confirmButtonText: "Back",
+    confirmButtonText: "Go to Cart",
+  }).then(() => {
+    window.location.href = "cart.html";
   });
 
   const userId = localStorage.getItem("userId");
@@ -88,3 +90,4 @@ function addToCart(productId) {
 
 
 loadProduct();
+
