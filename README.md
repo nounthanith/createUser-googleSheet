@@ -1,6 +1,7 @@
 # Google Sheet API User & Product Management
 
 This website project is my group assigment that i study at NUBB univercity of Battambang. In semester 2 of Year 2. It is my final project.
+- 👉 If you don't want to register you can testing with Email: user@gmail.com and Password: 123 . 🙏❤️💥
 
 ## Features
 
@@ -51,10 +52,13 @@ This website project is my group assigment that i study at NUBB univercity of Ba
 /about.html         # Team Member
 /product.detail     # Product Detail
 /product.js         # Product Detail Logic
+/cart.js            # Cart Logic
+/shippingCart       # Cart interface
+
 ```
 
 ## License
 
 MIT
 
-## Thank You!!
+## Thank You!!❤️🦭🙏
