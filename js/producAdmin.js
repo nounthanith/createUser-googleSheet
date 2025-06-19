@@ -214,6 +214,9 @@ function getCartData() {
       const cartData = data.data;
       const cartTable = document.getElementById("cartTable");
       const cartCount = document.getElementById("cartCount");
+      let totalPriceIncome;
+      let income = document.getElementById("income");
+      let totalPriceElement = document.getElementById("totalPriceIncome");
       // console.log("Cart data length:", cartData.length);
       // console.log("Cart data content:", cartData[0].userId);
       cartTable.innerHTML = "";
@@ -226,7 +229,9 @@ function getCartData() {
             <td class="fw-bold">#${i + 1}</td>
             <td >${row.userId}</td>
             <td class="text-success fw-bold">${row.userName}</td>
-            <td class="text-primary cursor-pointer">${row.userEmail}</td>
+            <td class="text-primary cursor-pointer"><a href="mailto:${
+              row.userEmail
+            }">${row.userEmail}</a></td>
             <td class="text-danger">${row.productId}</td>
             <td class="text-success fw-bold">${row.productPrice}$</td>
             <td><button class="btn btn-danger btn-sm" onclick="DeleteCartData('${
@@ -235,6 +240,18 @@ function getCartData() {
           </tr>
         `;
       }
+      totalPriceIncome = cartData.reduce(
+        (sum, item) => sum + parseFloat(item.productPrice),
+        0
+      );
+
+      
+      // income
+      income.innerHTML = totalPriceIncome + "$";
+
+      let totalIncomeTable = document.getElementById("totalIncomeTable");
+      totalIncomeTable.innerHTML = totalPriceIncome + "$";
+
     })
     .catch((error) => {
       console.error("Error fetching cart data:", error);
@@ -306,7 +323,6 @@ function DeleteCartData(id) {
 //       Swal.fire("Error", error.message, "error");
 //     });
 // }
-
 
 // function loadProductForEdit(id) {
 //   const params = {

@@ -10,6 +10,7 @@ const getCartItems = () => fetch(url)
     
     const cartItems = document.getElementById("cartItems");
     const cartTotal = document.getElementById("cartTotal");
+    let totalPrice;
     const filteredData = data.data.filter(item => 
       item.userId === userId || item.userEmail === userEmail
     );
@@ -17,7 +18,7 @@ const getCartItems = () => fetch(url)
     cartItems.innerHTML = ""; 
     filteredData.forEach(item => {
         cartTotal.textContent = filteredData.length;
-        console.log(item);
+        // console.log(item);
       const itemDiv = document.createElement("div");
       itemDiv.classList.add("cart-item");
       itemDiv.innerHTML = `
@@ -38,6 +39,12 @@ const getCartItems = () => fetch(url)
         <hr>
       `;
       cartItems.appendChild(itemDiv);
+      totalPrice = (totalPrice || 0) + parseFloat(item.productPrice);
+      // console.log("Total Price:", totalPrice);
+
+      let totalPriceElement = document.getElementById("totalPrice");
+      totalPriceElement.innerHTML = totalPrice
+
     });
   })
   .catch(error => {
