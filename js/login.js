@@ -8,9 +8,7 @@ document
 
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
-    const loginMessage = document.getElementById("loginMessage");
-    // console.log(email, password);
-    // console.log(loginMessage.textContent)
+    // const loginMessage = document.getElementById("loginMessage");
 
     try {
       const res = await fetch(url + "?action=read");
@@ -29,20 +27,31 @@ document
             window.location.href = "user.html";
           else {
             console.log("Invalid role");
-            loginMessage.textContent = "Invalid role. Please contact support.";
+            Swal.fire({
+              icon: "error",
+              title: "Invalid role",
+              text: "Please contact support.",
+            });
           }
           return;
         }
         if (email === data.data[i][2] && password != data.data[i][3]) {
           console.log("Incorrect password");
-          loginMessage.textContent = "Incorrect password. Please try again.";
+          Swal.fire({
+            icon: "error",
+            title: "Incorrect password",
+            text: "Please try again.",
+          });
           return;
         }
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
-      loginMessage.textContent =
-        "Error fetching user data. Please try again later.";
+      Swal.fire({
+        icon: "error",
+        title: "Error fetching user data",
+        text: "Please try again later.",
+      });
       return;
     }
   });

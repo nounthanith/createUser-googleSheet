@@ -30,6 +30,9 @@ async function loadProduct() {
                 <button class="btn btn-success w-100" onclick="addToCart('${product[0]}')">
                     <i class="fa fa-cart-plus"></i> Add to Cart
                 </button>
+                <button class="btn btn-primary w-100 mt-2" onclick="window.location.href='product.html'">
+                    <i class="fa fa-arrow-left"></i> Back to Products
+                </button>
                 </div>
             </div>
         </div>

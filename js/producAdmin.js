@@ -247,10 +247,10 @@ function getCartData() {
 
       
       // income
-      income.innerHTML = totalPriceIncome + "$";
+      income.innerHTML = totalPriceIncome.toFixed(2) + "$";
 
       let totalIncomeTable = document.getElementById("totalIncomeTable");
-      totalIncomeTable.innerHTML = totalPriceIncome + "$";
+      totalIncomeTable.innerHTML = totalPriceIncome.toFixed(2) + "$";
 
     })
     .catch((error) => {
