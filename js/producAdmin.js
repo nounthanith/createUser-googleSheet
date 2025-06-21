@@ -26,9 +26,9 @@ async function getProduct() {
               <img src="${row[5]}" class="card-img-top" alt="${row[1]}">
               <div class="card-body">
                 <h5 class="card-title">${row[1]}</h5>
-                
-                <p class="card-text text-success fw-bold">Price: ${row[3]}$</p>
-                
+
+                <p class="card-text text-danger fw-semibold">$${row[3]}</p>
+
               </div>
             </div>
           </div>
