@@ -28,7 +28,7 @@ async function loadProduct() {
                 <p class="fw-bold text-success mb-2" style="font-size: 1.2rem;">Price: ${product[3]}$</p>
                 <p class="mb-3"><span class="badge bg-secondary">Category: ${product[4]}</span></p>
                 <button class="btn btn-success w-100" onclick="addToCart('${product[0]}')">
-                    <i class="fa fa-cart-plus"></i> Add to Cart
+                    <i class="fa fa-cart-plus"></i>Buy Now
                 </button>
                 <button class="btn btn-primary w-100 mt-2" onclick="window.location.href='product.html'">
                     <i class="fa fa-arrow-left"></i> Back to Products
